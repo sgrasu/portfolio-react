@@ -1,0 +1,28 @@
+.my-gallery-class {
+}
+.gallery-children{
+	padding-bottom: 30px;
+	z-index: 0;
+}
+.title-overlay:hover {
+	opacity: 0.75;
+	background-color: black;
+	background-clip: content-box;
+}
+.title-overlay {
+	position:absolute;
+	height:100%;
+	width:100%;
+	padding:0px 30px 30px 0px;
+	margin: -0px 0px 0px -0px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+ h4{
+	display:none;
+	margin:0;
+}
+.title-overlay:hover h4{
+	display: inline;
+}

@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Photos from './Photos'
+import Header from './Header'
+import logo from './logo.svg'
+import './App.css'
 
 class App extends Component {
 
@@ -8,15 +10,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <container>
-        	<Photos>
-        		<Header></Header>
-        		<Gallery className="row"></Gallery>
+        <div className="container-fluid">
+        <Header/>
+        	<Photos id="photos">
         	</Photos>
-        </container>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default App

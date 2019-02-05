@@ -1,0 +1,21 @@
+.col {
+	display: flex;
+	justify-content: center;
+}
+.filters{
+	position:sticky;
+	top: 100pt;
+	height:95vh;
+	margin-top:15pt;
+}
+h3{
+	font-size:1.85rem;
+	color: #9c9c9c;
+}
+.filters ul li h3{
+	padding:30px 30px;
+}
+ul{
+	list-style-type: none;
+	padding:00;
+}
