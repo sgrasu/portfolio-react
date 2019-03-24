@@ -16,11 +16,13 @@ def main():
 		photoName = os.fsdecode(photo)
 		if(not os.path.isfile(path+'/thmbnl/'+photoName)):
 			resizing(path,photoName)
+		metadata = extractMetadata(path,photoName)
 		data['photos'].append({
 			'title': photoName,
-			'src': 'photos/'+'full/'+photoName,
-			'thmbnl': 'photos/' + 'thmbnl/'+photoName,
-			'metadata': extractMetadata(path,photoName)
+			'src': 'https://www.stefangrasu.com/photos/'+'full/'+photoName,
+			'thmbnl': 'https://www.stefangrasu.com/photos/' + 'thmbnl/'+photoName,
+			'metadata': metadata,
+			'caption': metadata['caption']
 			})
 	with open('../src/info.js','w') as outfile:
 		outfile.write('const data = ')
@@ -42,15 +44,22 @@ def extractMetadata(path, photoName):
 	metadata.read()
 	try:
 		country = metadata['Iptc.Application2.CountryName'].raw_value[0]
+		caption = country
 	except:
+		caption = ''
 		country = ''
 	try:
 		city = metadata['Iptc.Application2.City'].raw_value[0]
+		caption = city +', ' + caption if caption else city
 	except:
 		city = ''
 
 	try:
 		title = metadata['Iptc.Application2.ObjectName'].raw_value[0]
+		if title == city and caption:
+			pass
+		else:
+			caption = title +' | ' + caption if caption else title
 	except:
 		if(city ==''):
 			title = country
@@ -64,7 +73,8 @@ def extractMetadata(path, photoName):
 	return {'country': country,
 		'city': city,
 		'title': title,
-		'keyWords' : keyWords }
+		'keyWords' : keyWords,
+		'caption' : caption}
 
 
 if __name__ == "__main__":
