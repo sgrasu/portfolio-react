@@ -10,14 +10,11 @@ const masonryOptions = {
 class Photos extends Component {
   constructor(props) {
     super(props)
-    this.state = { photos: [], filters: ['all'], currentFilter: 'all' }
+    this.state = { photos: [], filters: ['all'], currentFilter: 'all', showLightbox: false, index: 0 }
   }
 
   setFilter = (filter) => {
-    console.log(this.state.photos)
     this.setState({currentFilter: filter})
-    console.log(this.currentFilter)
-    console.log(this.state.photos)
   }
   componentDidMount(){
     for(var photo of data["photos"]){
@@ -28,21 +25,32 @@ class Photos extends Component {
     }
     this.setFilter('all')
   }
+  filteredPhotos = () => {return(this.state.photos.filter(x=>
+            this.state.currentFilter =='all' ||
+            x.metadata.keyWords.includes(this.state.currentFilter)))
+  }
   render() {
     return (
-
-      <div className="row no-gutters">
-        <div className="filters col col-lg-2 col-md-3 col-sm-3 col-xs-3">
-          <ul>
+      console.log(this.filteredPhotos()),
+      <div className="row no-gutters justify-content-center">
+        <div className="filters col col-lg-2 col-md-2 d-none d-md-block">
+          <ul className = "nav flex-column">
             {this.state.filters.map(x=>
-              <li><h3 className="filter-option" 
-              onClick = {()=>this.setFilter(x)}>{x}</h3></li>)}
+              <li className = {this.state.currentFilter == x?'nav-item active':'nav-item'}>
+              <h3 className="filter-option" onClick = {()=>this.setFilter(x)}>{x}</h3>
+              </li>)}
+          </ul>
+        </div>
+        <div className="filters-sm row d-block d-md-none">
+          <ul className = "nav">
+            {this.state.filters.map(x=>
+              <li className = {this.state.currentFilter == x?'nav-item active':'nav-item'}>
+              <h3 className="filter-option" onClick = {()=>this.setFilter(x)}>{x}</h3>
+              </li>)}
           </ul>
         </div>
           <Gallery currentFilter = {this.state.currentFilter} 
-          elements = {this.state.photos.filter(x=>
-            this.state.currentFilter =='all' ||
-            x.metadata.keyWords.includes(this.state.currentFilter))}/>
+          elements = {this.filteredPhotos()}/>
       </div>
     )
   }

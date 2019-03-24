@@ -8,21 +8,34 @@
 	opacity: 0.75;
 	background-color: black;
 	background-clip: content-box;
+	cursor: pointer;
 }
 .title-overlay {
 	position:absolute;
-	height:100%;
-	width:100%;
-	padding:0px 30px 30px 0px;
-	margin: -0px 0px 0px -0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding:0px 0px 0px 0px;
+	margin: -0px -0px -0px -0px;
 	display:flex;
 	align-items: center;
 	justify-content: center;
+	transition: 0.5s ease;
 }
- h4{
+h4{
 	display:none;
 	margin:0;
 }
+.gallery-element{
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
 .title-overlay:hover h4{
 	display: inline;
+}
+#lightboxBackdrop{
+	z-index: 9999;
+	width: 100vw;
+	height:100vh;
 }

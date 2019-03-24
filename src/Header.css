@@ -1,7 +1,7 @@
 #header{
 	background-color: #212529;
 	z-index: 9999;
-	height:120pt;
+	height:100pt;
 	padding-left: 20pt;
 
 }
@@ -9,4 +9,14 @@
 }
 h1{
 	font-size:3.4rem;
+}
+@media screen and (max-width: 768px) {
+	.navbar{
+		height: 40pt !important;
+		justify-content: center;
+	}
+	.navbar h1{
+		font-size:2rem;
+	}
+
 }

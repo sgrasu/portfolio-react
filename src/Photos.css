@@ -8,14 +8,41 @@
 	height:95vh;
 	margin-top:15pt;
 }
+.filters-sm{
+	position: sticky;
+	background-color: #212529;
+	padding: 0 10pt 0 10pt;
+	z-index: 9999;
+	top: 40pt;
+	width:100%;
+}
+.filters-sm ul{
+	justify-content: space-between;
+}
+.nav-item h3{
+	cursor: pointer;
+}
+.filters-sm h3{
+	font-size:1.4rem;
+}
 h3{
-	font-size:1.85rem;
+	font-size:1.70rem;
 	color: #9c9c9c;
 }
+
 .filters ul li h3{
-	padding:30px 30px;
+	margin:30px 0px;
+}
+.active h3{
+	color: #e2e4eb 
 }
 ul{
 	list-style-type: none;
 	padding:00;
+}
+@media screen and (min-width: 576px) {
+	.filters-sm ul{
+		justify-content: space-around;
+	}
+
 }
