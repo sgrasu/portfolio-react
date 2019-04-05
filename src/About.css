@@ -1,0 +1,17 @@
+.prof{
+	height:40vh;
+	display: flex;
+	justify-content: space-between;
+	padding: 30px 0 30px 30px;
+}
+.prof .body{
+	width:100%;
+	display: flex;
+	justify-content: center;
+}
+.prof-pic{
+  border-radius: 50%;
+  width: auto;
+  height: 100%;
+
+}
